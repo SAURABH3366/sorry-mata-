@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🥲Sorry Bhumi babu 🥹</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Pacifico', cursive;
+      overflow: hidden;
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .heart {
+      position: absolute;
+      color: rgba(255, 105, 180, 0.7);
+      font-size: 24px;
+      animation: floatUp 6s infinite ease-in;
+      opacity: 0;
+    }
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-600px) scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-rose-100 via-pink-200 to-yellow-100 text-gray-900 flex flex-col items-center justify-center min-h-screen p-4 relative">
+
+  <h1 class="text-5xl font-bold mb-8 text-pink-600 drop-shadow-lg">🥲Sorry Bhumi babu 🥹</h1>
+
+  <button
+    id="showButton"
+    class="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 px-6 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl"
+  >
+    Show Sorry in Different Languages
+  </button>
+
+  <ul id="sorryList" class="mt-8 space-y-4 text-xl hidden">
+    <li class="fade-in"><strong>English:</strong> Sorry Bhumi</li>
+    <li class="fade-in"><strong>Hindi:</strong> सॉरी भूमि</li>
+    <li class="fade-in"><strong>Spanish:</strong> Lo siento Bhumi</li>
+    <li class="fade-in"><strong>French:</strong> Désolé Bhumi</li>
+    <li class="fade-in"><strong>German:</strong> Entschuldigung Bhumi</li>
+    <li class="fade-in"><strong>Arabic:</strong> آسف يا بومي</li>
+    <li class="fade-in"><strong>Chinese:</strong> 对不起 Bhumi</li>
+    <li class="fade-in"><strong>Japanese:</strong> ごめんねブーミ</li>
+    <li class="fade-in"><strong>Russian:</strong> Прости, Бхуми</li>
+    <li class="fade-in"><strong>Tamil:</strong> மன்னிக்கவும் பூமி</li>
+    <li class="fade-in"><strong>Bengali:</strong> দুঃখিত ভূমি</li>
+    <li class="fade-in"><strong>Punjabi:</strong> ਮਾਫ ਕਰੀ ਭੂਮੀ</li>
+  </ul>
+
+  <!-- Floating Hearts -->
+  <div id="hearts-container"></div>
+
+  <script>
+    const button = document.getElementById("showButton");
+    const list = document.getElementById("sorryList");
+    const items = list.querySelectorAll(".fade-in");
+
+    button.addEventListener("click", () => {
+      list.classList.remove("hidden");
+      items.forEach((item, index) => {
+        setTimeout(() => {
+          item.classList.add("visible");
+        }, index * 200);
+      });
+      button.disabled = true;
+      button.innerText = "Shown with Love ❤";
+    });
+
+    // Floating heart animation generator
+    const heartsContainer = document.getElementById('hearts-container');
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerText = '❤';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = 4 + Math.random() * 3 + 's';
+      heartsContainer.appendChild(heart);
+      setTimeout(() => {
+        heart.remove();
+      }, 7000);
+    }
+    setInterval(createHeart, 500);
+  </script>
+
+</body>
+</html>
